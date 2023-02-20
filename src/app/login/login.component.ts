@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AppSettings } from '../app.settings';
 
@@ -11,10 +12,10 @@ import { AppSettings } from '../app.settings';
 export class LoginComponent implements OnInit {
 
   activePage: string = 'login';
-
+  isLoaded: boolean = false;
   login_remember: boolean = false;
+
   passwordType: string = 'password';
-  isLoaded: boolean = true;
 
   login_form: FormGroup;
   recovery_form: FormGroup;
@@ -27,22 +28,10 @@ export class LoginComponent implements OnInit {
 
   validation_messages: any;
 
-  // constructor(
-  //   private formBuilder: FormBuilder,) {
-
-  // }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    this.login_form = new FormGroup({
-      email: new FormControl('', [
-        Validators.required,
-        Validators.pattern(AppSettings.VALIDATION.PATTERNS.EMAIL)
-      ]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(8),
-      ])
-    });
+    this.setupValidations();
   }
 
   onHandlerSubmit(): void {
@@ -159,16 +148,14 @@ export class LoginComponent implements OnInit {
     };
   }
 
-  async attemptLogin() {
-    try {
-      console.log('test:', this.login_form.value, this.login_remember);
-      // this.alertService.showLoading('login_page.login.alerts.authenticating');
-      // await this.userService.login(this.login, this.login_remember);
-      // await this.alertService.hideLoading();
-      // this.router.navigate([this.redirect ? this.redirect : '/chat'], { replaceUrl: true });
-      // location.reload();
-    } catch (e: any) {
-      // this.alertService.hideLoadingAndShowError(e.message);
-    }
+  attemptLogin() {
+    this.isLoaded = true;
+    console.log('test:', this.login_form.value, this.login_remember);
+
+    this.isLoaded
+      ? this.router.navigate(['/chat'])
+      : this.router.navigate(['/login'])
+
+
   }
 }

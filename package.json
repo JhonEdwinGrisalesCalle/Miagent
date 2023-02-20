@@ -21,7 +21,7 @@
     "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "@popperjs/core": "^2.11.6",
     "boostrap": "^2.0.0",
-    "bootstrap": "^5.2.3",
+    "bootstrap": "4.6.x",
     "install": "^0.13.0",
     "jquery": "^3.6.3",
     "npm": "^9.5.0",

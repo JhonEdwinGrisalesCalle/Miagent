@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { NavbarComponent } from './menus/components/navbar/navbar.component';
 
-const routes: Routes = [{ path: 'login', loadChildren: () => LoginComponent }];
+const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'chat', component: NavbarComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

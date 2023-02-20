@@ -1,0 +1,10 @@
+@import "../../../theme/theme-variables.scss";
+
+:host {
+  display: flex;
+  flex: 1;
+}
+
+span {
+  color: $text-gray;
+}

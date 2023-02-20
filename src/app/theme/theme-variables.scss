@@ -1,0 +1,343 @@
+/*
+ * Application global variables.
+ */
+
+// --------------------------------------------------
+// FONTS
+@import url('https://fonts.googleapis.com/css?family=Muli:300,400,600,700');
+
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('https://s3.eu-central-1.amazonaws.com/assets.33bot.io/fonts/helvetica-rounded/HelveticaRoundedLTStd-Bd.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// Regular
+@font-face {
+  font-family: 'Graphik';
+  src: url('https://s3.eu-central-1.amazonaws.com/assets.33bot.io/fonts/graphik/GraphikRegular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Graphik';
+  src: url('https://s3.eu-central-1.amazonaws.com/assets.33bot.io/fonts/graphik/GraphikRegularItalic.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+// Semibold
+@font-face {
+  font-family: 'Graphik';
+  src: url('https://s3.eu-central-1.amazonaws.com/assets.33bot.io/fonts/graphik/GraphikSemibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Graphik';
+  src: url('https://s3.eu-central-1.amazonaws.com/assets.33bot.io/fonts/graphik/GraphikSemiboldItalic.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+}
+// Super
+@font-face {
+  font-family: 'Graphik';
+  src: url('https://s3.eu-central-1.amazonaws.com/assets.33bot.io/fonts/graphik/GraphikSuper.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Graphik';
+  src: url('https://s3.eu-central-1.amazonaws.com/assets.33bot.io/fonts/graphik/GraphikSuperItalic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+}
+// Thin
+@font-face {
+  font-family: 'Graphik';
+  src: url('https://s3.eu-central-1.amazonaws.com/assets.33bot.io/fonts/graphik/GraphikThin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Graphik';
+  src: url('https://s3.eu-central-1.amazonaws.com/assets.33bot.io/fonts/graphik/GraphikThinItalic.otf') format('opentype');
+  font-weight: 100;
+  font-style: italic;
+}
+// Bold
+@font-face {
+  font-family: 'Graphik';
+  src: url('https://s3.eu-central-1.amazonaws.com/assets.33bot.io/fonts/graphik/GraphikBold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Graphik';
+  src: url('https://s3.eu-central-1.amazonaws.com/assets.33bot.io/fonts/graphik/GraphikBoldItalic.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
+}
+// Light
+@font-face {
+  font-family: 'Graphik';
+  src: url('https://s3.eu-central-1.amazonaws.com/assets.33bot.io/fonts/graphik/GraphikLight.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Graphik';
+  src: url('https://s3.eu-central-1.amazonaws.com/assets.33bot.io/fonts/graphik/GraphikLightItalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+$tablet-h: '(max-width: 1000px)';
+$tablet-v: '(max-width: 1000px)';
+$mobile: '(max-width: 1000px)';
+
+$query-max-width: "(max-width: 1200px)";
+$max-width: 1200px;
+
+$primary: #158089;
+$secondary: #F23700;
+$dark: #515261; //#45647D;
+$white: #ffffff;
+$black: #1d1d1b;
+$black-light: #313837;
+
+// Grises
+
+$grey-background-image: #666666;
+$grey-text-header: #6D777D;
+$gray-bg-color: #f5f5f5;
+
+
+
+
+$sub_chat_color: $dark;
+
+$background-light: #E8E8E8;
+
+$background-md-color: linear-gradient(135deg, #f2186e 0%, #fc8c2a 100%);
+
+$toolbar-border-color: #D1D1D1;
+$modal-inset-width: 90vh;
+$modal-inset-height-large: 90vh;
+$toolbar-md-button-border-radius: 4px;
+
+$font-size-base: 0.95rem !default; // 1.4rem == 14px
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+
+$interaction-card-min-height-big: 120px;
+$interaction-card-min-height: 50px;
+
+$user-var-border-color: rgb(196, 132, 216);
+$user-var-bg-color: rgba(196,132,216, 0.2);
+
+$admin-var-border-color: rgb(110,130,219);
+$admin-var-bg-color: rgba(110,130,219, 0.2);
+
+$color-input-border: rgba(69,100,125,0.2);
+
+$color-border: $toolbar-border-color;
+$color-white: #ffffff;
+$color-black: $dark; // Antes #333
+$color-red: #f53d3d;
+
+$color-redasd: #F95000;
+
+$color-grey: #9B9B9B; // Antes #76838f
+$color-grey-light: #f3f7f9;
+$color-grey-light-border: $toolbar-border-color;
+
+$color-facebook: #4267b2;
+$color-blue-new: #0E6BFE;
+$color-green-new: #82D237;
+
+$color-gray-dark: #5A758A;
+$text-gray: #7D7E94;
+
+$colors: (
+  primary: $primary,
+  secondary: $secondary,
+  blue: #799cf1,
+  danger: #E32A64,
+  light: #8693b0,
+  dark: $dark,
+  pink-to-orange: #f63e58,
+  red-to-orange: #fb7b34,
+  blue-to-pink: #24b3b3,
+  white: $color-white,
+  gray: #dedede,
+  gray-light: #f7f7f7,
+  gray-medium: #999,
+  nodejs: #579050,
+  facebook: $color-facebook,
+  blue-new: $color-blue-new,
+  green: $color-green-new
+);
+
+$toggle-md-handle-background-color-off: #fff;
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+//$input-border-radius: 50px;
+$default-transition: 250ms;
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+$body-background-color: #f5f5f5;
+
+// ··································································
+// HEADER
+
+$main-header-top: 0;
+$main-header-left: 0;
+$main-header-height: 50px;
+$main-header-width: 100vw;
+$main-header-background: $dark;
+
+
+// ··································································
+// MENU
+
+// Secondary menu
+$secondary-menu-top: $main-header-height;
+$secondary-menu-left: 50px;
+$secondary-menu-height: calc(100vh - #{$main-header-height});
+$secondary-menu-width: 200px;
+$secondary-menu-background: #E2E2E4;
+
+// Secondary menu -> Items
+$secondary-menu-item-color: $dark;
+$secondary-menu-item-color-hover: $secondary;
+$secondary-menu-item-color-active: $secondary;
+
+
+// Main Menu
+$main-menu-top: 0;
+$main-menu-left: 0;
+$main-menu-height: 100vh;
+$main-menu-width-close: 50px;
+$main-menu-background: linear-gradient(0deg, #FA893A -50%, #E62562 100%);
+
+// Main Menu -> Items
+$main-menu-item-color: $white;
+$main-menu-item-color-hover: $dark;
+$main-menu-item-bg-color-hover: $gray-bg-color;
+$main-menu-item-color-active: $dark;
+$main-menu-item-bg-color-active: $gray-bg-color;
+$main-menu-item-bg-color-active-with-submenu: $secondary-menu-background;
+
+// ··································································
+// CONTENT
+
+$content-bg-color: $gray-bg-color;
+$content-vertical-padding: 38px;
+$content-horizontal-padding: 30px;
+
+$article-padding: 22px;
+
+$right-bar-width: 360px;
+
+// ··································································
+// TABS
+
+$tabs-border-color: #E3E3E3;
+
+// ··································································
+// OTHERS
+
+$backdrop-background-color: rgba(0,0,0,0.5);
+$backdrop-background-color-white: rgba($gray-bg-color, 0.9);
+
+$input-padding: 9px 8px;
+$input-height: 40px;
+$button-height: 40px;
+$button-small-height: 32px;
+
+$searchbar-height: 80px;
+
+$max-input-width: 250px;
+$mobile-device-width: 320px;
+
+$breadcums-height: 44px;
+
+$padding-very-small: 5px;
+
+$ui-border-radius: 4px;
+
+$button-md-border-radius: $ui-border-radius;
+//$button-md-text-transform: none;
+$button-md-font-size: 1.5rem;
+$button-md-small-font-size: 1.1rem;
+
+$card-md-border-radius: $ui-border-radius;
+//$card-md-title-padding: 8px 14px;
+$card-md-header-color: #67779c;
+
+$grid-padding-width:         0px !default;
+
+$split-pane-side-max-width: 20%;
+$split-pane-side-min-width: 250px;
+$text-input-placeholder-color: lighten($text-gray, 20%);
+
+$searchbar-md-input-border-radius: $ui-border-radius;
+
+$font-family-base: 'Graphik';
+$font-family-default-base: $font-family-base;
+$font-size: $font-size-base;
+
+// ··································································
+// TRANSITIONS
+
+$default-transition-time: 300ms;
+
+$ease-out-transition:   cubic-bezier(0.250, 0.460, 0.450, 0.940); /* easeOutQuad */
+$ease-in-transition:    cubic-bezier(0.550, 0.085, 0.680, 0.530); /* easeInQuad */
+$ease-inout-transition: cubic-bezier(0.455, 0.030, 0.515, 0.955); /* easeInOutQuad */
+
+$default-transition: $default-transition-time $ease-out-transition;
+$large-transition: $default-transition-time*1.5 $ease-out-transition;
+
+// Angular Material custom theme
+// See https://material.angular.io/guide/theming for more details.
+//
+// You can also read https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1
+// for more insight about Angular Material theming.
+
+// @import "~@angular/material/theming";
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+// $app-primary: mat-palette($mat-pink);
+$app-primary: mat-palette(#D288A2);
+// $app-accent:  mat-palette($mat-orange);
+$app-accent:  mat-palette(#ED944D);
+
+// The warn palette is optional (defaults to red).
+$app-warn:    mat-palette(#B33F40);
+// $app-warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+
+
+$session-list-width: 320px;
+$session-detail-width: 360px;
+$default-padding: 10px;
+$menu-width: 240px;

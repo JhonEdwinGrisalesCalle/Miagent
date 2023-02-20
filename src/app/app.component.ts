@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MIAGENT';
+
+  static LANGUAGES: Array<string> = ['en', 'es'];
 }

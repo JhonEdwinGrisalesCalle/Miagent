@@ -1,0 +1,209 @@
+@import "../theme/theme-variables";
+
+
+.content-login-page {
+    display: flex;
+    // position: relative;
+    
+    &.show {
+        .content-hand {
+            
+            .container-text {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            figure {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    }
+    
+    .content-page {
+        height: 100vh;
+        position: relative;
+        width: 40%;
+        background: $body-background-color;
+
+        @media #{$tablet-v} {
+            width: 100%;
+        }
+
+        @media #{$mobile} {
+            display: block !important;
+            padding: 20px;
+        }
+
+        .content-wrapper {
+            position: absolute;
+            top: 20rem; 
+            left: 20%;
+            // background-color: red;
+        }
+
+        .logo-wrapper,
+        .content-wrapper {
+            @media #{$mobile} {
+                position: relative;
+                display: block !important;
+            }
+        }
+
+        .logo-wrapper {
+            @media #{$mobile} {
+                height: 100px;
+                max-height: 100px !important;
+                width: 100%;
+            }
+        }
+
+        .logo {
+            position: absolute;
+            top: 35px;
+            left: 35px;
+            width: 120px;
+
+            @media #{$mobile} {
+                top: 5px;
+                left: 5px;
+                width: 120px;
+            }
+        }
+
+        .languages {
+            position: absolute;
+            right: 35px;
+            top: 40px;
+            color: $dark;
+
+            @media #{$mobile} {
+                right: 5px;
+                top: 10px;
+            }
+        }
+
+        // login, registro, reuperar contraseña, cambiar contraseña.
+        .content-login,
+        .content-register,
+        .content-recover-password,
+        .content-reset-password,
+        .content-code,
+        .content-resend-code {
+            // position: absolute;
+            // text-align: center;
+            // top: 50%;
+            // left: 50%;
+            // transform: translate(-50%, -50%);
+            // width: 70%;
+            max-width: 350px;
+            margin: 0 auto;
+
+            .title {
+                padding-bottom: 8px;
+                color: $secondary;
+                font-size: 2rem;
+                font-weight: 300;
+                line-height: 38px;
+                text-align: center;
+            }
+
+            .description {
+                color: $dark;
+                // font-size: 14px;
+                line-height: 18px;
+                padding-bottom: 25px;
+                text-align: center;
+            }
+
+            input.text-input {
+                border-radius: 4px;
+                margin-bottom: 5px;
+                padding-left: 20px !important;
+            }
+
+            .position-checkbox {
+                padding-top: 22px;
+                text-align: left;
+                label {
+                    margin-left: 20px;
+                }
+            }
+
+            .position-button {
+                text-align: left;
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+
+            .line {
+                border-top: 1px solid #D1D1D1;
+                margin-top: 12px;
+                margin-bottom: 12px;
+                height: 1px;
+            }
+        }
+
+    }
+
+    .divider {
+        .title {
+            padding-bottom: 8px;
+            color: $primary;
+            font-size: 2rem;
+            font-weight: 300;
+            line-height: 38px;
+            text-align: center;
+        }
+    }
+
+    .content-hand {
+        position: relative;
+        width: 60%;
+        background: #000000;
+
+        @media #{$mobile} {
+            width: 0%;
+            display: none;
+        }
+
+        .container-text {
+            position: absolute;
+            top: 25%;
+            left: 13%;
+            color: #FFFFFF;
+            opacity: 0;
+            transform: translateY(20%);
+            transition: all $large-transition;
+            transition-delay: 300ms;
+
+            .first-text {
+                font-size: 2.4rem;
+                font-weight: 300;
+                margin-bottom: 26px;
+            }
+
+            .second-text {
+                font-size: 1.4rem;
+                font-weight: 300;
+            }
+        }
+
+        figure {
+            position: absolute;
+            height: 100%;
+            width: 50%;
+            top: 0;
+            right: 0;
+            margin: 0;
+            background: url(https://s3.eu-central-1.amazonaws.com/assets.33bot.io/corporate/web/landing-slide-01.png) no-repeat;
+            background-position: 20% 100%;
+            background-size: auto 72%;
+            transform: translateX(20%);
+            opacity: 0;
+            transition: all $large-transition;
+            transition-delay: 400ms;
+        }
+    }
+
+}

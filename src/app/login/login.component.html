@@ -1,0 +1,382 @@
+<div class="content-login-page" [class.show]="isLoaded">
+  <!-- PANTALLA DE LA IZQUIERDA ·······················  -->
+
+  <div class="content-page">
+    <div class="logo-wrapper">
+      <img
+        class="logo"
+        src="https://s3.eu-central-1.amazonaws.com/assets.33bot.io/logo.svg"
+      />
+
+      <div class="languages">
+        <select>
+          <option
+            *ngFor="
+              let lang of [
+                { label: 'es', name: 'Español' },
+                { label: 'en', name: 'Ingles' },
+                { label: 'fr', name: 'Frances' }
+              ]
+            "
+            [value]="lang.name"
+          >
+            {{ lang.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="content-wrapper">
+      <!-- LOGIN ··········································  -->
+      <div class="content-login" *ngIf="activePage == 'login'">
+        <div class="title">
+          {{ "login_page.login.title" }}
+        </div>
+        <div class="description">
+          {{ "login_page.login.description" }}
+        </div>
+
+        <!-- inputs -->
+        <form
+          class="inputs"
+          [formGroup]="login_form"
+          (ngSubmit)="onHandlerSubmit()"
+        >
+          <!-- EMAIL -->
+          <div class="validate-item">
+            <input
+              type="text"
+              class="text-input"
+              placeholder="Email *"
+              formControlName="email"
+            />
+          </div>
+
+          <!-- CONTRASEÑA -->
+          <div class="validate-item">
+            <input
+              [type]="passwordType"
+              class="text-input"
+              placeholder="Password *"
+              formControlName="password"
+            />
+          </div>
+
+          <!-- checkbox para mantener la sesion  -->
+          <div class="position-checkbox">
+            <input type="checkbox" name="activeSesion" />
+            <label for="activeSesion">Mantener sesión activa</label>
+          </div>
+
+          <!-- Botón de Login -->
+          <div class="padded-vertical-md">
+            <button
+              mat-flat-button
+              color="primary"
+              app-ga
+              ga-category="login"
+              ga-action="login"
+              class="uppercase"
+              (click)="attemptLogin()"
+            >
+              Acceder
+            </button>
+          </div>
+        </form>
+
+        <div class="line"></div>
+
+        <!-- IR AL REGISTRO -->
+        <div>
+          <p>
+            <a
+              routerLink="/login/recover-password"
+              app-ga
+              ga-category="login"
+              ga-action="go-recover-password"
+              >Olvidé mi contraseña</a
+            >
+          </p>
+        </div>
+      </div>
+
+      <!-- REGISTRO ·······································  -->
+      <div class="content-register" *ngIf="activePage == 'register'">
+        <div class="title">
+          {{ "login_page.register.title" }}
+        </div>
+        <div class="description">
+          {{ "login_page.register.description" }}
+        </div>
+
+        <!-- inputs -->
+        <div class="inputs">
+          <div class="validate-item">
+            <input
+              type="text"
+              class="text-input"
+              [placeholder]="'login_page.register.placeholder.name'"
+              formControlName="user_name"
+            />
+          </div>
+
+          <div formGroupName="matching_passwords_register">
+            <!-- CONTRASEÑA -->
+            <div class="validate-item">
+              <input
+                [type]="passwordType"
+                class="text-input"
+                [placeholder]="'login_page.register.placeholder.password'"
+                formControlName="password"
+              />
+            </div>
+
+            <!-- CONFIRMAR CONTRASEÑA -->
+            <div class="validate-item">
+              <input
+                [type]="passwordType"
+                class="text-input"
+                [placeholder]="
+                  'login_page.register.placeholder.confirm_password'
+                "
+                formControlName="confirm_new_password"
+              />
+            </div>
+          </div>
+
+          <div class="margin-top-sm">
+            <p>re captcha</p>
+          </div>
+        </div>
+
+        <!-- Términos y Condiciones -->
+        <div class="position-checkbox">
+          <input type="checkbox" name="terminos y condiciones" id="" />
+        </div>
+
+        <!-- Botón de Registro -->
+        <div
+          fxLayout="row"
+          fxLayoutAlign="end center"
+          class="padded-vertical-md"
+        >
+          <button mat-flat-button class="uppercase" color="primary">
+            {{ "login_page.register.button_access" }}
+          </button>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="text-bottom">
+          <p>
+            {{ "login_page.register.have_account" }}
+            <a
+              routerLink="/login/login"
+              app-ga
+              ga-category="login"
+              ga-action="go-login"
+            >
+              {{ "login_page.register.go_login" }}
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <!-- RECUPERAR CONTRASEÑA ···························· -->
+      <div
+        class="content-recover-password"
+        *ngIf="activePage == 'recover-password'"
+      >
+        <div class="title">
+          {{ "login_page.recover_password.title" }}
+        </div>
+        <div class="description">
+          {{ "login_page.recover_password.description" }}
+        </div>
+
+        <!-- inputs -->
+        <!-- EMAIL -->
+        <div class="inputs">
+          <div class="validate-item">
+            <input
+              type="text"
+              class="text-input"
+              [placeholder]="'login_page.recover_password.placeholder.email'"
+              formControlName="email"
+            />
+          </div>
+
+          <!-- botón de enviar -->
+          <div class="padded-vertical-md">
+            <button
+              mat-flat-button
+              color="primary"
+              app-ga
+              ga-category="login"
+              ga-action="recover-password"
+              class="uppercase"
+            >
+              {{ "login_page.recover_password.button_send" }}
+            </button>
+          </div>
+
+          <div class="line"></div>
+
+          <!-- ir al registro -->
+          <div>
+            <p>
+              <a
+                routerLink="/login/login"
+                app-ga
+                ga-category="login"
+                ga-action="go-login"
+                >{{ "login_page.recover_password.remember_password" }}</a
+              >
+            </p>
+            <!--p><a routerLink="/login/reset-password">{{ 'login_page.forgot_password.code'}}</a></p-->
+          </div>
+        </div>
+      </div>
+
+      <!-- CAMBIAR CONTRASEÑA ······························ -->
+      <div
+        class="content-reset-password"
+        *ngIf="activePage == 'reset-password'"
+      >
+        <div class="title">
+          {{ "login_page.reset_password.title" }}
+        </div>
+        <div class="description">
+          {{ "login_page.reset_password.description" }}
+        </div>
+
+        <!-- inputs -->
+        <div class="inputs">
+          <div formGroupName="matching_passwords">
+            <!-- NUEVA CONTRASEÑA -->
+            <div class="validate-item">
+              <input
+                [type]="passwordType"
+                class="text-input"
+                [placeholder]="'login_page.reset_password.new_password'"
+                formControlName="password"
+              />
+            </div>
+
+            <!-- CONFIRMAR NUEVA CONTRASEÑA -->
+            <div class="validate-item">
+              <input
+                [type]="passwordType"
+                class="text-input"
+                [placeholder]="'login_page.reset_password.confirm_new_password'"
+                formControlName="confirm_new_password"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- botón de enviar  -->
+        <div class="padded-vertical-md">
+          <button
+            mat-flat-button
+            color="primary"
+            app-ga
+            ga-category="login"
+            ga-action="reset-password"
+            class="uppercase"
+          >
+            {{ "login_page.reset_password.button" }}
+          </button>
+        </div>
+
+        <div class="line"></div>
+
+        <!-- ir al registro ·······················  -->
+        <div class="text-bottom">
+          <p>
+            <a
+              routerLink="/login/login"
+              app-ga
+              ga-category="login"
+              ga-action="go-login"
+              >{{ "login_page.reset_password.remember_password" }}</a
+            >
+          </p>
+        </div>
+      </div>
+
+      <!-- MENSAJE DE ENVIO DE CONFIRMACIÓN ···························· -->
+      <div
+        class="content-recover-password"
+        *ngIf="activePage == 'wait-confirmation'"
+      >
+        <div class="title">
+          {{ "login_page.forgot_password.title" }}
+        </div>
+        <div class="description">
+          {{ "login_page.forgot_password.description" }}
+        </div>
+
+        <!-- inputs -->
+        <!-- EMAIL -->
+        <div class="inputs">
+          <div class="validate-item">
+            <input
+              type="text"
+              class="text-input"
+              [placeholder]="'login_page.forgot_password.email'"
+              formControlName="email"
+            />
+          </div>
+
+          <!-- botón de enviar -->
+          <div
+            fxLayout="row"
+            fxLayoutAlign="end center"
+            class="padded-vertical-md"
+          >
+            <button
+              mat-flat-button
+              color="primary"
+              app-ga
+              ga-category="login"
+              ga-action="recover-password"
+              class="uppercase"
+            >
+              {{ "login_page.forgot_password.button" }}
+            </button>
+          </div>
+
+          <div class="line"></div>
+
+          <!-- ir al registro -->
+          <div>
+            <p>
+              <a
+                routerLink="/login/login"
+                app-ga
+                ga-category="login"
+                ga-action="go-login"
+                >{{ "login_page.forgot_password.remember_password" }}</a
+              >
+            </p>
+            <!-- p><a routerLink="/login/reset-password">{{ 'login_page.forgot_password.code'}}</a></p -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANTALLA DE LA DERECHA ·······················  -->
+  <div class="content-hand">
+    <canvas id="canvas"></canvas>
+    <!--figure></figure-->
+    <div class="container-text">
+      <div class="first-text" [innerHTML]="'login_page.right_page.title'"></div>
+      <div
+        class="second-text"
+        [innerHTML]="'login_page.right_page.description'"
+      ></div>
+    </div>
+  </div>
+</div>

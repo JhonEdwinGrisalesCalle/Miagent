@@ -2,15 +2,12 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AppSettings } from './app.settings';
 
-import { UserService } from './common/services/user.service';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  // constructor(private userService: UserService) { }
 
   constructor(
     public translateService: TranslateService
@@ -25,7 +22,4 @@ export class AppComponent {
 
   title = 'MIAGENT';
 
-  // logout() {
-  //   this.userService.logout();
-  // }
 }

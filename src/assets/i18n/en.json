@@ -1,0 +1,51 @@
+{
+
+  "loginComponent":{
+    "login_page": {
+      "right_page": {
+        "title": "Design and build <br> your own chatbots",
+        "description": "Without technical knowledge, at your own pace,<br> with an interface as intuitive as powerful.<br> 33Bot helps you to automate <br> your business."
+      },
+      "login": {
+        "title": "My chatbots",
+        "description": "Access your 33Bot Live area here.",
+        "placeholder": {
+          "email": "Email *",
+          "password": "Password *"
+        }
+      },
+      "description_checkbox": "Keeping the session open",
+      "button_access": "gain access",
+      "forgot_password": "I forgot my password",
+      "text_before_creating_account": "If you don't have an account yet,",
+      "create_account": "you can create it now"
+    },
+    "register": {
+      "title": "Do you have a code?",
+      "description": "Create your free 33Bot Live account now.",
+      "placeholder": {
+        "name": "User name *",
+        "email": "Email *",
+        "password": "Password *",
+        "confirm_password": "Confirm Password *",
+        "code": "Code *"
+      },
+      "description_checkbox": "Keeping the session open",
+      "button_access": "gain access",
+      "accept_legal": "<div>I accept the <span><a>terms and conditions of use </a></span> and <span><a>privacy policy</a></span></div>.",
+      "have_account": "If you already have an account, press",
+      "go_login": "to access it now."
+    },
+    "recover_password" : {
+      "title": "¡Get it back!",
+      "description": "Enter your account email and retrieve your password.",
+      "placeholder": {
+        "email": "Email *"
+      },
+      "button_send": "send",
+      "remember_password": "I remembered my password"
+    }
+  }
+}
+
+

@@ -9,20 +9,7 @@
       />
 
       <div class="languages">
-        <select>
-          <option
-            *ngFor="
-              let lang of [
-                { label: 'es', name: 'Español' },
-                { label: 'en', name: 'Ingles' },
-                { label: 'fr', name: 'Frances' }
-              ]
-            "
-            [value]="lang.name"
-          >
-            {{ lang.name }}
-          </option>
-        </select>
+         <app-language-selector></app-language-selector>
       </div>
     </div>
 
@@ -30,10 +17,10 @@
       <!-- LOGIN ··········································  -->
       <div class="content-login" *ngIf="activePage == 'login'">
         <div class="title">
-          {{ "login_page.login.title" }}
+          {{ "loginComponent.login_page.login.title" | translate}}
         </div>
         <div class="description">
-          {{ "login_page.login.description" }}
+          {{ "loginComponent.login_page.login.description" | translate }}
         </div>
 
         <!-- inputs -->
@@ -47,7 +34,7 @@
             <input
               type="text"
               class="text-input"
-              placeholder="Email *"
+              [placeholder]="'loginComponent.login_page.login.placeholder.email' | translate"
               formControlName="email"
             />
           </div>
@@ -65,7 +52,9 @@
           <!-- checkbox para mantener la sesion  -->
           <div class="position-checkbox">
             <input type="checkbox" name="activeSesion" />
-            <label for="activeSesion">Mantener sesión activa</label>
+            <label for="activeSesion">
+              {{ "loginComponent.login_page.description_checkbox" | translate }}
+            </label>
           </div>
 
           <!-- Botón de Login -->
@@ -80,7 +69,7 @@
               type="submit"
               (click)="attemptLogin()"
             >
-              Acceder
+            {{ "loginComponent.login_page.button_access" | translate }}
             </button>
           </div>
         </form>
@@ -95,7 +84,8 @@
               app-ga
               ga-category="login"
               ga-action="go-recover-password"
-              >Olvidé mi contraseña</a
+              >{{ "loginComponent.login_page.forgot_password" | translate }}
+              </a
             >
           </p>
         </div>
@@ -162,7 +152,7 @@
           class="padded-vertical-md"
         >
           <button mat-flat-button class="uppercase" color="primary">
-            {{ "login_page.register.button_access" }}
+            {{ "loginComponent.login_page.register.button_access" }}
           </button>
         </div>
 

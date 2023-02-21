@@ -1,0 +1,49 @@
+{
+
+  "loginComponent":{
+    "login_page": {
+      "right_page": {
+        "title": "Diseña y construye <br> tus propios chatbots",
+        "description": "Sin conocimientos técnicos, a tu ritmo,<br> con un interfaz tan intuitivo como potente.<br> 33Bot te ayuda a automatizar <br> tu negocio."
+      },
+      "login": {
+        "title": "Mis chatbots",
+        "description": "Accede aquí a tu zona 33Bot Live.",
+        "placeholder": {
+          "email": "Email *",
+          "password": "Contraseña *"
+        }
+      },
+      "description_checkbox": "Mantener la sesión abierta",
+      "button_access": "acceder",
+      "forgot_password": "Olvidé mi contraseña",
+      "text_before_creating_account": "Si aún no tienes una cuenta,",
+      "create_account": "puedes crearla ahora"
+    },
+    "register": {
+      "title": "¿Tienes un código?",
+      "description": "Crea ahora tu cuenta gratuita 33Bot Live.",
+      "placeholder": {
+        "name": "Nombre del usuario *",
+        "email": "Email *",
+        "password": "Contraseña *",
+        "confirm_password": "Confirmar contraseña *",
+        "code": "Código *"
+      },
+      "description_checkbox": "Mantener la sesión abierta",
+      "button_access": "acceder",
+      "accept_legal": "<div>Acepto los <span><a>términos y condiciones de uso </a></span> y la <span><a>política de privacidad</a></span></div>",
+      "have_account": "Si ya tienes una cuenta, pulsa",
+      "go_login": "para acceder ahora."
+    },
+    "recover_password": {
+      "title": "¡Recupérala!",
+      "description": "Escribe el email de tu cuenta y recupera tu contraseña.",
+      "placeholder": {
+        "email": "Email *"
+      },
+      "button_send": "enviar",
+      "remember_password": "Recordé mi contraseña"
+    }
+  }
+}

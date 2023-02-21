@@ -1,0 +1,16 @@
+<div class="input-group mb-3 section-lenguage">
+  <!-- <div class="icon-lenguage"> -->
+    <!-- <img src={{iconLang}} class="input-group-text" for="inputGroupSelect01" > -->
+    <label class="input-group-text" for="inputGroupSelect01"><img src={{iconLang}} class="icon-lenguage"></label>
+
+    <!-- <a class="input-group-text icon-lenguage" for="inputGroupSelect01" >
+      <img src={{iconLang}} class="icon-lenguage"> -->
+    <!-- </a> -->
+
+  <!-- </div> -->
+  <select #langSelect (change)="changeLang(langSelect.value)"  class="form-select">
+    <option *ngFor="let lang of langs" [value]="lang">{{ lang.toUpperCase() }}</option>
+  </select>
+</div>
+
+

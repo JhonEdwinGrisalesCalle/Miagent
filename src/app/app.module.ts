@@ -1,8 +1,11 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule, Injector } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './login/login.component';
+
 import { NavbarComponent } from './menus/components/navbar/navbar.component';
 import { LeftMenuComponent } from './menus/components/left-menu/left-menu.component';
 import { LeftSubMenuComponent } from './menus/components/left-sub-menu/left-sub-menu.component';
@@ -11,9 +14,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
 
-import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
-
 import { LanguageSelectorComponent } from "./common/components/lenguage-Selector/language-selector/language-selector.component";
 
 
@@ -21,7 +21,16 @@ export function HttpLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http,'./assets/i18n/', '.json');
 }
 
+import { UserService } from './common/services/user.service';
 
+export function AppLoaderFactory(userService: UserService) {
+  return () => {
+    return new Promise<void>(async (resolve) => {
+      await userService.init();
+      resolve();
+    });
+  };
+}
 @NgModule({
     declarations: [
         AppComponent,
@@ -44,7 +53,15 @@ export function HttpLoaderFactory(http: HttpClient){
             }
         }),
     ],
-    providers: [],
+    providers: [
+      UserService,
+      {
+        provide: APP_INITIALIZER,
+        useFactory: AppLoaderFactory,
+        deps: [UserService, Injector],
+        multi: true
+      },
+    ],
     bootstrap: [AppComponent]
 })
 

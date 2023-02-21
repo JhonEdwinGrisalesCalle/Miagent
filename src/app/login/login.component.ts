@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 
 import { AppSettings } from '../app.settings';
+import { UserService } from '../common/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,13 @@ export class LoginComponent implements OnInit {
 
   validation_messages: any;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private userService: UserService) {
+
+    if (this.userService.user) {
+      this.goHome();
+    }
+  }
 
   ngOnInit() {
     this.setupValidations();
@@ -148,14 +155,23 @@ export class LoginComponent implements OnInit {
     };
   }
 
-  attemptLogin() {
-    this.isLoaded = true;
-    console.log('test:', this.login_form.value, this.login_remember);
+  goHome() {
+    this.router.navigate(['/chat'], { replaceUrl: true });
+  }
 
-    this.isLoaded
-      ? this.router.navigate(['/chat'])
-      : this.router.navigate(['/login'])
+  async attemptLogin() {
+    try {
+      await this.userService.login(this.login_form.value, this.login_remember)
+      this.isLoaded = true;
+      console.log('test:', this.login_form.value, this.login_remember);
 
+      this.isLoaded
+        ? this.router.navigate(['/chat'], { replaceUrl: true })
+        : this.router.navigate(['/login'], { replaceUrl: true })
+
+    } catch (error) {
+      console.error(error);
+    }
 
   }
 }

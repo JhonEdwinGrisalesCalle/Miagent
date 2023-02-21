@@ -1,10 +1,12 @@
-// import * as _ from 'lodash';
+import * as _ from 'lodash';
 // import { Logger } from '@app/shared/services/logger.service';
 import { User } from '@app/common/models/user.model';
 import { Injectable, Injector } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppSettings } from '@app/app.settings';
 import { Router } from '@angular/router';
+
+import { lastValueFrom } from 'rxjs';
 // import {UtilsHelper} from "@app/common/helpers/utils.helper";
 
 
@@ -18,7 +20,9 @@ export class UserService {
   // PROPERTIES
 
   user: User | null = null;
+  // user: User = new User()
   iot_credentials: any;
+  response: Object;
 
   // ---------------------------------------------------------------------------------------
   // CONSTRUCTOR
@@ -67,7 +71,7 @@ export class UserService {
     if (event) {
       event.stopPropagation();
     }
-    this.router.navigate(['/login/login'], { replaceUrl: true });
+    this.router.navigate(['/login'], { replaceUrl: true });
   }
 
   logout(): void {
@@ -107,13 +111,15 @@ export class UserService {
       // Replace by proper authentication call
       const options = { headers: AppSettings.getHeaders() };
 
-      const response: any = await this.http.post(
+      const response$ = this.http.post(
         AppSettings.API.USER.LOGIN,
         data,
         options
-      ).toPromise();
+      );
 
-      const user: User = new User(response);
+      this.response = await lastValueFrom(response$);
+
+      const user: User = new User(this.response);
       this.setCredentials(user, persistent);
       return user;
 
@@ -160,16 +166,16 @@ export class UserService {
 
   // async myData(): Promise<any> {
 
-  // const response = await this.http.get(
-  //   AppSettings.API.USER.REFRESHDATA,
-  //   AppSettings.getHttpOptionsWithToken()
-  // ).toPromise();
+  //   const response = await this.http.get(
+  //     AppSettings.API.USER.REFRESHDATA,
+  //     AppSettings.getHttpOptionsWithToken()
+  //   ).toPromise();
 
-  // _.assign(this.user, response);
+  //   _.assign(this.user, response);
 
-  // sessionStorage.setItem(credentialsKey, JSON.stringify(this.user));
+  //   sessionStorage.setItem(credentialsKey, JSON.stringify(this.user));
 
-  // return response;
+  //   return response;
   // }
 
   // async getIotCredentials(): Promise<any> {

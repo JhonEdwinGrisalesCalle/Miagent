@@ -12,9 +12,15 @@ import { UserService } from './common/services/user.service';
 export class AppComponent {
   // constructor(private userService: UserService) { }
 
-  constructor(public translate: TranslateService){
-    this.translate.addLangs(['es','en']);
-    this.translate.setDefaultLang('es');
+  constructor(
+    public translateService: TranslateService
+  ) {
+    this.translateService.addLangs(AppSettings.LANGUAGES);
+    this.translateService.setDefaultLang('es');
+    const browserLang: string = this.translateService.getBrowserLang() || 'es';
+    if (browserLang) {
+      this.translateService.use(browserLang);
+    }
   }
 
   title = 'MIAGENT';

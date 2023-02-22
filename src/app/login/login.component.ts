@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { replace } from 'lodash';
 
 import { AppSettings } from '../app.settings';
 import { UserService } from '../common/services/user.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,35 +14,100 @@ export class LoginComponent implements OnInit {
 
   activePage: string = 'login';
   isLoaded: boolean = false;
-  login_remember: boolean = false;
+  login_remember: boolean = true;
+  redirect: string = '';
 
   passwordType: string = 'password';
 
+  register: any = {
+    username: null,
+    password: null,
+    confirm_password: null,
+    email: null,
+    code: null,
+    preferredLanguage: null
+  };
+
+  validateCode: any = {
+    code: null,
+    email: null
+  };
+
+  reset: any = {
+    email: null,
+    code: null,
+    new_password: null,
+    confirm_new_password: null
+  };
+
   login_form: FormGroup;
+  register_form: FormGroup;
   recovery_form: FormGroup;
   reset_form: FormGroup;
-  code_form: FormGroup;
-  resend_code_form: FormGroup;
   matching_passwords_form: FormGroup;
   matching_passwords_form_reset: FormGroup;
-  register_form: FormGroup;
 
   validation_messages: any;
 
   constructor(private router: Router,
+    private activeRoute: ActivatedRoute,
     private userService: UserService) {
 
+    this.setupValidations();
     if (this.userService.user) {
       this.goHome();
     }
+    this.router.navigate(['/login/recover-password'], { replaceUrl: true })
+    this.activeRoute.params.subscribe(routeParams => {
+      console.log('routeParams', routeParams);
+    });
   }
 
   ngOnInit() {
-    this.setupValidations();
-  }
 
-  onHandlerSubmit(): void {
-    console.warn(this.login_form.value);
+    // this.activeRoute.params.subscribe(routeParams => {
+    // this.activePage = routeParams.type;
+
+    //   this.activeRoute.queryParamMap.subscribe(async (params: any) => {
+    //     this.redirect = params.params ? params.params.redirect : null;
+    //     if (params.params && params.params.email && params.params.code) {
+    //       switch (this.activePage) {
+    //         case 'register':
+    //           this.register.code = params.params.code;
+    //           this.register.email = params.params.email;
+    //           this.register_form.patchValue({
+    //             code: params.params.code
+    //           });
+    //           this.register_form.patchValue({
+    //             email: params.params.email
+    //           });
+    //           break;
+    //         case 'code':
+    //           this.validateCode.email = params.params.email;
+    //           this.validateCode.code = params.params.code;
+
+    //           // await this.attemptValidateCode();
+    //           break;
+    //         case 'reset-password':
+    //           this.reset.email = params.params.email;
+    //           this.reset.code = params.params.code;
+    //           this.reset_form.patchValue({
+    //             email: this.reset.email
+    //           });
+    //           this.reset_form.patchValue({
+    //             code: this.reset.code
+    //           });
+    //           break;
+    //         default:
+    //           break;
+    //       }
+    //     }
+    //   });
+
+    //   setTimeout(() => {
+    //     this.isLoaded = true;
+    //   }, 500);
+    // });
   }
 
   setupValidations(): void {
@@ -110,27 +175,6 @@ export class LoginComponent implements OnInit {
       ]),
     });
 
-    // ··········································
-    // CODE
-    this.code_form = new FormGroup({
-      code: new FormControl('', [
-        Validators.required,
-      ]),
-      email: new FormControl('', [
-        Validators.required,
-        Validators.pattern(AppSettings.VALIDATION.PATTERNS.EMAIL)
-      ]),
-    });
-
-    // ··········································
-    // RESEND CODE
-    this.resend_code_form = new FormGroup({
-      email: new FormControl('', [
-        Validators.required,
-        Validators.pattern(AppSettings.VALIDATION.PATTERNS.EMAIL)
-      ]),
-    });
-
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // MENSAJES
     this.validation_messages = {
@@ -163,15 +207,13 @@ export class LoginComponent implements OnInit {
     try {
       await this.userService.login(this.login_form.value, this.login_remember)
       this.isLoaded = true;
-      console.log('test:', this.login_form.value, this.login_remember);
-
       this.isLoaded
         ? this.router.navigate(['/chat'], { replaceUrl: true })
-        : this.router.navigate(['/login'], { replaceUrl: true })
-
+        : this.router.navigate(['/login/login'], { replaceUrl: true })
     } catch (error) {
       console.error(error);
     }
 
   }
+
 }

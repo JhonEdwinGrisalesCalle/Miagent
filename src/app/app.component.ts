@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AppSettings } from './app.settings';
 
@@ -9,8 +10,7 @@ import { AppSettings } from './app.settings';
 })
 export class AppComponent {
 
-  constructor(
-    public translateService: TranslateService
+  constructor(public translateService: TranslateService
   ) {
     this.translateService.addLangs(AppSettings.LANGUAGES);
     this.translateService.setDefaultLang('es');

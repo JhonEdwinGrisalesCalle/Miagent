@@ -4,7 +4,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { LoginRoutingModule } from './login/login-routing.module';
 import { LoginComponent } from './login/login.component';
+
+import { UserService } from './common/services/user.service';
+
+import { ValidationMessageComponent } from '@app/common/components/validation-message/validation-message.component';
 
 import { NavbarComponent } from './menus/components/navbar/navbar.component';
 import { LeftMenuComponent } from './menus/components/left-menu/left-menu.component';
@@ -21,7 +26,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-import { UserService } from './common/services/user.service';
 
 export function AppLoaderFactory(userService: UserService) {
   return () => {
@@ -38,11 +42,13 @@ export function AppLoaderFactory(userService: UserService) {
     NavbarComponent,
     LeftMenuComponent,
     LeftSubMenuComponent,
-    LanguageSelectorComponent
+    LanguageSelectorComponent,
+    ValidationMessageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    LoginRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot({

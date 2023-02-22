@@ -45,5 +45,15 @@
       "button_send": "enviar",
       "remember_password": "Recordé mi contraseña"
     }
+  },
+  "menu_nav":{
+    "online":"Activo",
+    "pause": "En pausa",
+    "logout":"Cerrar sesión",
+    "state_drop_down":{
+      "information":"Estado \"En pausa\" por",
+      "message_select":"Selecciona un motivo",
+      "another_option":"Otros"
+    }
   }
 }

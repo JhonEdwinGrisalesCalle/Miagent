@@ -164,7 +164,6 @@ export class LoginComponent implements OnInit {
       await this.userService.login(this.login_form.value, this.login_remember)
       this.isLoaded = true;
       console.log('test:', this.login_form.value, this.login_remember);
-
       this.isLoaded
         ? this.router.navigate(['/chat'], { replaceUrl: true })
         : this.router.navigate(['/login'], { replaceUrl: true })

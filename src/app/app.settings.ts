@@ -35,7 +35,7 @@ export class AppSettings {
     }
   };
 
-  static LANGUAGES: Array<string> = ['en', 'es'];
+  static LANGUAGES: Array<string> = ['es', 'en'];
 
   static TRANSITION_TIME = 300;
 

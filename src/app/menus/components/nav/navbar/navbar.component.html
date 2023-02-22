@@ -1,0 +1,39 @@
+<nav class="navbar container-nav navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="../../../../assets/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      MiaAgent
+    </a>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li> -->
+      </ul>
+
+      <span class="navbar-text">
+        {{nameUser}}
+      </span>
+
+      <div class="action-separator"></div>
+      <span class="navbar-text">
+        <app-status-agent ></app-status-agent>
+      </span>
+
+      <div class="action-separator"></div>
+
+      <span class="navbar-text">
+        <app-session-close></app-session-close>
+      </span>
+      <div class="action-separator"></div>
+      <span class="navbar-text">
+        <app-language-selector [type]="'nav'"></app-language-selector>
+      </span>
+    </div>
+  </div>
+</nav>
+
+<app-pause-selection *ngIf="conectionState==false"></app-pause-selection>

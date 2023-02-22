@@ -1,0 +1,29 @@
+
+.bg-light{
+  background-color: rgb(255, 255, 255) !important;
+  border-bottom: 1px solid #d1d1d1;
+}
+
+.action-separator {
+  margin-top: 14px;
+  opacity: 1;
+  display: inline-block;
+  vertical-align: middle;
+  width: 1px;
+  height: 20px;
+  background-color: #a3a7a5;
+  margin-right: 0.5%;
+  margin-left: 0.5%;
+  margin-bottom: 1%;
+}
+
+
+nav.navbar.container-nav.navbar-expand-lg.bg-light {
+  height: 47px;
+  padding: 0%;
+}
+
+
+.langMenuStyle {
+   flex: 0 0 auto !important;
+}

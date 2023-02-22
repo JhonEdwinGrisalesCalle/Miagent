@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -8,14 +8,17 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class LanguageSelectorComponent {
 
+  @Input() type : string;
 
   langs: string[] = [];
+  defaultLang: string;
   iconLang : string = '../../../../../assets/img/imgLenguages/es.png';
 
   constructor(
     private translate: TranslateService
   ) {
     this.langs = this.translate.getLangs();
+    this.defaultLang = this.translate.getDefaultLang();
   }
 
   changeLang(lang: string) {

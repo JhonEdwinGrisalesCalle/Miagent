@@ -45,6 +45,16 @@
       "button_send": "send",
       "remember_password": "I remembered my password"
     }
+  },
+  "menu_nav":{
+    "online":"Online",
+    "pause":"Pause",
+    "logout":"Logout",
+    "state_drop_down":{
+      "information":"Paused for",
+      "message_select":"select a reason",
+      "another_option":"others"
+    }
   }
 }
 

@@ -6,15 +6,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 
-import { NavbarComponent } from './menus/components/navbar/navbar.component';
+import { NavbarComponent } from './menus/components/nav/navbar/navbar.component';
 import { LeftMenuComponent } from './menus/components/left-menu/left-menu.component';
 import { LeftSubMenuComponent } from './menus/components/left-sub-menu/left-sub-menu.component';
 
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
-
-import { LanguageSelectorComponent } from "./common/components/lenguage-Selector/language-selector/language-selector.component";
+import { LanguageSelectorComponent } from "./common/components/language-selector/language-selector.component";
 
 
 export function HttpLoaderFactory(http: HttpClient){
@@ -22,6 +21,9 @@ export function HttpLoaderFactory(http: HttpClient){
 }
 
 import { UserService } from './common/services/user.service';
+import { SessionCloseComponent } from './menus/components/nav/session-close/session-close.component';
+import { StatusAgentComponent } from './menus/components/nav/status-agent/status-agent.component';
+import { PauseSelectionComponent } from './menus/components/nav/pause-selection/pause-selection.component';
 
 export function AppLoaderFactory(userService: UserService) {
   return () => {
@@ -38,7 +40,10 @@ export function AppLoaderFactory(userService: UserService) {
         NavbarComponent,
         LeftMenuComponent,
         LeftSubMenuComponent,
-        LanguageSelectorComponent
+        LanguageSelectorComponent,
+        SessionCloseComponent,
+        StatusAgentComponent,
+        PauseSelectionComponent
     ],
     imports: [
         BrowserModule,

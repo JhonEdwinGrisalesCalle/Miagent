@@ -46,7 +46,8 @@ export class AppSettings {
       PASSWORD: '^(?=(?:.*\\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})\\S{8,}$'
     },
     MESSAGES: {
-      REQUIRED: 'validation.required',
+      REQUIRED: 'Requerido',
+      // REQUIRED: 'validation.required',
       INVALID_FORMAT: 'validation.invalid_format',
       MIN_LENGTH: 'validation.min_length',
       MISMATCH: 'validation.mismatch',
@@ -100,9 +101,10 @@ export class AppSettings {
     return { headers: AppSettings.getHeaders() };
   }
 
-  // static getHttpOptionsWithToken() {
-  //   return { headers: AppSettings.getHeadersToken(JSON.parse(sessionStorage.getItem('user'))) };
-  // }
+  static getHttpOptionsWithToken() {
+    const userInfo = sessionStorage.getItem('user')
+    return { headers: AppSettings.getHeadersToken(JSON.parse(userInfo || '{}')) };
+  }
 
 }
 

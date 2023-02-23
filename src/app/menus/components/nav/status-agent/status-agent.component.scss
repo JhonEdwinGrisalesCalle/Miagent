@@ -1,7 +1,10 @@
 .form-check-input:checked {
-  background-color: #d6d5d5;
+  background-color: #7ED321;
+  border: #7ED321;
 }
-
+.form-check-input {
+  background-color: #e9ecef;
+}
 .form-switch {
   padding-left: 2.5em !important;
 }

@@ -1,0 +1,114 @@
+<div class="content-login-page">
+  <!-- PANTALLA DE LA IZQUIERDA ·······················  -->
+
+  <div class="content-page">
+    <div class="logo-wrapper">
+      <img
+        class="logo"
+        src="https://s3.eu-central-1.amazonaws.com/assets.33bot.io/logo.svg"
+      />
+
+      <div class="languages"></div>
+    </div>
+
+    <div class="content-wrapper">
+      <!-- REGISTRO ·······································  -->
+      <div class="content-register" *ngIf="activePage == 'register'">
+        <div class="title">
+          {{ "login_page.register.title" }}
+        </div>
+        <div class="description">
+          {{ "login_page.register.description" }}
+        </div>
+
+        <!-- inputs -->
+        <div class="inputs">
+          <div class="validate-item">
+            <input
+              type="text"
+              class="text-input"
+              [placeholder]="'login_page.register.placeholder.name'"
+              formControlName="user_name"
+            />
+          </div>
+
+          <div formGroupName="matching_passwords_register">
+            <!-- CONTRASEÑA -->
+            <div class="validate-item">
+              <input
+                type="password"
+                class="text-input"
+                [placeholder]="'login_page.register.placeholder.password'"
+                formControlName="password"
+              />
+            </div>
+
+            <!-- CONFIRMAR CONTRASEÑA -->
+            <div class="validate-item">
+              <input
+                type="password"
+                class="text-input"
+                [placeholder]="
+                  'login_page.register.placeholder.confirm_password'
+                "
+                formControlName="confirm_new_password"
+              />
+            </div>
+          </div>
+
+          <div class="margin-top-sm">
+            <p>re captcha</p>
+          </div>
+        </div>
+
+        <!-- Términos y Condiciones -->
+        <div class="position-checkbox">
+          <input type="checkbox" name="terminos y condiciones" id="" />
+        </div>
+
+        <!-- Botón de Registro -->
+        <div
+          fxLayout="row"
+          fxLayoutAlign="end center"
+          class="padded-vertical-md"
+        >
+          <button mat-flat-button class="uppercase" color="primary">
+            {{ "loginComponent.login_page.register.button_access" }}
+          </button>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="text-bottom">
+          <p>
+            {{ "login_page.register.have_account" }}
+            <a
+              routerLink="/login/login"
+              app-ga
+              ga-category="login"
+              ga-action="go-login"
+            >
+              {{ "login_page.register.go_login" }}
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANTALLA DE LA DERECHA ·······················  -->
+  <div class="content-hand">
+    <canvas id="canvas"></canvas>
+    <!--figure></figure-->
+    <div class="container-text">
+      <div
+        class="first-text"
+        [innerHTML]="'loginComponent.login_page.right_page.title'"
+      ></div>
+      <div
+        class="second-text"
+        [innerHTML]="'loginComponent.login_page.right_page.description'"
+      ></div>
+    </div>
+  </div>
+</div>

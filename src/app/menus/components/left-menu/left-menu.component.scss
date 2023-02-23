@@ -1,0 +1,55 @@
+.left {
+  width: 48px;
+  height: 100%;
+  background: #2f2f2f;
+  white-space: nowrap;
+  transition: width 0.5s;
+  position: fixed;
+  z-index: 9999;
+
+
+}
+
+.left ul {
+  padding: 0;
+  list-style-type: none;
+  text-align: left;
+}
+
+.left li:hover {
+  background: #464C4B;
+}
+
+.left .item-menu {
+  height: 48px;
+  width: 48px;
+  overflow: hidden;
+
+
+}
+
+.row>* {
+  padding-left: 0px;
+}
+
+
+
+.icon:hover {
+  background: #464C4B;
+  fill: #E63F23;
+
+}
+// 	.left a{
+// 		color: white;
+// 	    text-decoration: none;
+// 	    font-weight: bold;
+// 	}
+// 	span.menu{
+// 		padding-left: 17px;
+// 	}
+// 	.t_search {
+// 	    color: black;
+// 	    height: 35px;
+// 	    margin-left: 15px;
+// 	    width: 190px
+// 	}

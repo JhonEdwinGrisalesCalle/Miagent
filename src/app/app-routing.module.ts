@@ -4,8 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './menus/components/nav/navbar/navbar.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: 'login/login', pathMatch: 'full' },
   { path: 'chat', component: NavbarComponent },
 ];
 

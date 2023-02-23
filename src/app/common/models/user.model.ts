@@ -3,19 +3,19 @@ export class User {
   // ---------------------------------------------------------------------------------------
   // PROPERTIES
 
-  _id: string = '';
-  username: string = '';
-  email: string = '';
-  password: string = '';
-  isAdmin: boolean = false;
-  chats: Array<string> = [];
-  created_at: Date = new Date();
-  updated_at: Date = new Date();
-  preferredLanguage: string = '';
-  facebookAccessToken: string | null = '';
-  marketplace_id: string = '';
-  pending_orders: number = 0;
-  token: string = '';
+  _id: string;
+  username: string;
+  email: string;
+  password: string;
+  isAdmin: boolean;
+  chats: Array<string>;
+  created_at: Date;
+  updated_at: Date;
+  preferredLanguage: string;
+  facebookAccessToken: string | null;
+  marketplace_id: string;
+  pending_orders: number;
+  token: string;
 
 
   // ---------------------------------------------------------------------------------------
@@ -48,9 +48,10 @@ export class User {
           case 'updated_at':
             this.updated_at = new Date(data[key]);
             break;
-          // default:
-          //   this[key] = data[key];
-          //   break;
+          default:
+            const indexKey = key as keyof typeof this;
+            this[indexKey] = data[key];
+            break;
         }
 
       }

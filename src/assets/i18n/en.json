@@ -1,6 +1,5 @@
 {
-
-  "loginComponent":{
+  "loginComponent": {
     "login_page": {
       "right_page": {
         "title": "Design and build <br> your own chatbots",
@@ -15,7 +14,7 @@
         }
       },
       "description_checkbox": "Keeping the session open",
-      "button_access": "gain access",
+      "button_access": "Login",
       "forgot_password": "I forgot my password",
       "text_before_creating_account": "If you don't have an account yet,",
       "create_account": "you can create it now"
@@ -36,7 +35,7 @@
       "have_account": "If you already have an account, press",
       "go_login": "to access it now."
     },
-    "recover_password" : {
+    "recover_password": {
       "title": "¡Get it back!",
       "description": "Enter your account email and retrieve your password.",
       "placeholder": {
@@ -53,9 +52,7 @@
     "state_drop_down":{
       "information":"Paused for",
       "message_select":"select a reason",
-      "another_option":"others"
+      "button_acept": "Accept"
     }
   }
 }
-
-

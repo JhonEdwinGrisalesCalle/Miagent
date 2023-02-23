@@ -19,8 +19,7 @@ export class UserService {
   // ---------------------------------------------------------------------------------------
   // PROPERTIES
 
-  user: User | null = null;
-  // user: User = new User()
+  user: User | any = null;
   iot_credentials: any;
   response: Object;
 
@@ -57,7 +56,7 @@ export class UserService {
 
       if (this.user) {
         sessionStorage.setItem(credentialsKey, JSON.stringify(this.user));
-        // await this.myData();
+        await this.myData();
       } else {
         this.setCredentials();
       }
@@ -71,7 +70,7 @@ export class UserService {
     if (event) {
       event.stopPropagation();
     }
-    this.router.navigate(['/login'], { replaceUrl: true });
+    this.router.navigate(['/login/login'], { replaceUrl: true });
   }
 
   logout(): void {
@@ -92,9 +91,6 @@ export class UserService {
         // solo lo guardamos en sessionStorage
         sessionStorage.setItem(credentialsKey, JSON.stringify(user));
       }
-
-      // const storage = remember ? localStorage : sessionStorage;
-      // storage.setItem(credentialsKey, JSON.stringify(user));
     } else {
       sessionStorage.removeItem(credentialsKey);
       localStorage.removeItem(credentialsKey);
@@ -120,6 +116,8 @@ export class UserService {
       this.response = await lastValueFrom(response$);
 
       const user: User = new User(this.response);
+      console.log('user', user);
+
       this.setCredentials(user, persistent);
       return user;
 
@@ -132,51 +130,76 @@ export class UserService {
   // REGISTRO
 
   async register(data: any): Promise<any> {
-    const response = await this.http.post(
-      AppSettings.API.USER.REGISTER,
-      data
-    ).toPromise();
-    return response;
+    try {
+      const response$ = this.http.post(
+        AppSettings.API.USER.REGISTER,
+        data
+      );
+
+      this.response = await lastValueFrom(response$);
+
+      return this.response;
+    } catch (e) {
+      throw e;
+    }
   }
 
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // RECUPERAR CONTRASEÑA
 
   async recoverPassword(data: any): Promise<any> {
-    const response = await this.http.post(
-      AppSettings.API.USER.RECOVER_PASSWORD,
-      data
-    ).toPromise();
-    return response;
+    try {
+      const response$ = await this.http.post(
+        AppSettings.API.USER.RECOVER_PASSWORD,
+        data
+      );
+
+      this.response = await lastValueFrom(response$);
+      return this.response;
+
+    } catch (e) {
+      throw e
+    }
+
   }
 
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // RESTABLECER CONTRASEÑA
 
   async resetPassword(data: any): Promise<any> {
-    const response = await this.http.post(
-      AppSettings.API.USER.RESET_PASSWORD,
-      data
-    ).toPromise();
-    return response;
+    try {
+      const response$ = await this.http.post(
+        AppSettings.API.USER.RESET_PASSWORD,
+        data
+      );
+
+      this.response = await lastValueFrom(response$);
+
+      return this.response;
+
+    } catch (e) {
+      throw e;
+    }
   }
 
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // MIS DATOS
 
-  // async myData(): Promise<any> {
+  async myData(): Promise<any> {
 
-  //   const response = await this.http.get(
-  //     AppSettings.API.USER.REFRESHDATA,
-  //     AppSettings.getHttpOptionsWithToken()
-  //   ).toPromise();
+    const response$ = this.http.get(
+      AppSettings.API.USER.REFRESHDATA,
+      AppSettings.getHttpOptionsWithToken()
+    );
 
-  //   _.assign(this.user, response);
+    this.response = await lastValueFrom(response$);
 
-  //   sessionStorage.setItem(credentialsKey, JSON.stringify(this.user));
+    _.assign(this.user, this.response);
 
-  //   return response;
-  // }
+    sessionStorage.setItem(credentialsKey, JSON.stringify(this.user));
+
+    return this.response;
+  }
 
   // async getIotCredentials(): Promise<any> {
 

@@ -20,7 +20,7 @@
 
       <div class="action-separator"></div>
       <span class="navbar-text">
-        <app-status-agent ></app-status-agent>
+        <app-status-agent (state)="stateUser($event)"></app-status-agent>
       </span>
 
       <div class="action-separator"></div>
@@ -36,4 +36,7 @@
   </div>
 </nav>
 
-<app-pause-selection *ngIf="conectionState==false"></app-pause-selection>
+<app-pause-selection *ngIf="state==false"></app-pause-selection>
+
+<app-left-menu></app-left-menu>
+<app-left-sub-menu></app-left-sub-menu>

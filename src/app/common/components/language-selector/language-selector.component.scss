@@ -1,7 +1,11 @@
 :host{
   width: 10%;
 }
-
+.form-select{
+  font-family: 'Mulish';
+  font-size: inherit;
+  color: #777e85;
+}
 .icon-lenguage{
   width: 25%;
 }
@@ -23,4 +27,9 @@ label.input-group-text {
 
 .nav{
   margin-top: 1rem
+}
+
+option{
+  font-family: 'Mulish';
+
 }

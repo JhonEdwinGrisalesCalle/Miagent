@@ -1,6 +1,5 @@
 {
-
-  "loginComponent":{
+  "loginComponent": {
     "login_page": {
       "right_page": {
         "title": "Diseña y construye <br> tus propios chatbots",
@@ -10,7 +9,7 @@
         "title": "Mis chatbots",
         "description": "Accede aquí a tu zona 33Bot Live.",
         "placeholder": {
-          "email": "Email *",
+          "email": "Correo *",
           "password": "Contraseña *"
         }
       },
@@ -53,7 +52,7 @@
     "state_drop_down":{
       "information":"Estado \"En pausa\" por",
       "message_select":"Selecciona un motivo",
-      "another_option":"Otros"
+      "button_acept": "Aceptar"
     }
   }
 }

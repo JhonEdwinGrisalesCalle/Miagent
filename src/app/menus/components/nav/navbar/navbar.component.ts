@@ -8,7 +8,7 @@ import { UserService } from '@app/common/services/user.service';
 })
 export class NavbarComponent {
 
-  conectionState=true;
+  state:boolean;
   constructor(private userService: UserService) { }
 
   nameUser = this.userService.user?.email || 'undefined';
@@ -18,4 +18,7 @@ export class NavbarComponent {
     this.userService.logout();
   }
 
+  stateUser(state: boolean){
+    this.state= state;
+  }
 }

@@ -9,7 +9,7 @@
       />
 
       <div class="languages">
-         <app-language-selector></app-language-selector>
+        <app-language-selector></app-language-selector>
       </div>
     </div>
 
@@ -17,26 +17,29 @@
       <!-- LOGIN ··········································  -->
       <div class="content-login" *ngIf="activePage == 'login'">
         <div class="title">
-          {{ "loginComponent.login_page.login.title" | translate}}
+          <!-- <div class="title"> -->
+          {{ "loginComponent.login_page.login.title" | translate }}
         </div>
         <div class="description">
           {{ "loginComponent.login_page.login.description" | translate }}
         </div>
 
         <!-- inputs -->
-        <form
-          class="inputs"
-          [formGroup]="login_form"
-          (ngSubmit)="onHandlerSubmit()"
-        >
+        <form class="inputs" [formGroup]="login_form">
           <!-- EMAIL -->
           <div class="validate-item">
             <input
               type="text"
               class="text-input"
-              [placeholder]="'loginComponent.login_page.login.placeholder.email' | translate"
+              [placeholder]="
+                'loginComponent.login_page.login.placeholder.email' | translate
+              "
               formControlName="email"
             />
+            <app-validation-message
+              [field]="login_form.get('email')"
+              [messages]="validation_messages.email"
+            ></app-validation-message>
           </div>
 
           <!-- CONTRASEÑA -->
@@ -44,9 +47,16 @@
             <input
               [type]="passwordType"
               class="text-input"
-              [placeholder]="'loginComponent.login_page.login.placeholder.password' | translate"
+              [placeholder]="
+                'loginComponent.login_page.login.placeholder.password'
+                  | translate
+              "
               formControlName="password"
             />
+            <app-validation-message
+              [field]="login_form.get('password')"
+              [messages]="validation_messages.password"
+            ></app-validation-message>
           </div>
 
           <!-- checkbox para mantener la sesion  -->
@@ -66,10 +76,10 @@
               ga-category="login"
               ga-action="login"
               class="uppercase"
-              type="submit"
+              [disabled]="!login_form.valid"
               (click)="attemptLogin()"
             >
-            {{ "loginComponent.login_page.button_access" | translate }}
+              {{ "loginComponent.login_page.button_access" | translate }}
             </button>
           </div>
         </form>
@@ -80,13 +90,12 @@
         <div>
           <p>
             <a
-              routerLink="/login/recover-password"
+              [routerLink]="['/login/recover-password']"
               app-ga
               ga-category="login"
               ga-action="go-recover-password"
               >{{ "loginComponent.login_page.forgot_password" | translate }}
-              </a
-            >
+            </a>
           </p>
         </div>
       </div>
@@ -109,6 +118,10 @@
               [placeholder]="'login_page.register.placeholder.name'"
               formControlName="user_name"
             />
+            <app-validation-message
+              [field]="register_form.get('user_name')"
+              [messages]="validation_messages.user_name"
+            ></app-validation-message>
           </div>
 
           <div formGroupName="matching_passwords_register">
@@ -195,6 +208,10 @@
               [placeholder]="'login_page.recover_password.placeholder.email'"
               formControlName="email"
             />
+            <app-validation-message
+              [field]="recovery_form.get('email')"
+              [messages]="validation_messages.email"
+            ></app-validation-message>
           </div>
 
           <!-- botón de enviar -->
@@ -224,7 +241,6 @@
                 >{{ "login_page.recover_password.remember_password" }}</a
               >
             </p>
-            <!--p><a routerLink="/login/reset-password">{{ 'login_page.forgot_password.code'}}</a></p-->
           </div>
         </div>
       </div>
@@ -318,6 +334,10 @@
               [placeholder]="'login_page.forgot_password.email'"
               formControlName="email"
             />
+            <app-validation-message
+              [field]="recovery_form.get('email')"
+              [messages]="validation_messages.email"
+            ></app-validation-message>
           </div>
 
           <!-- botón de enviar -->
@@ -363,10 +383,15 @@
     <canvas id="canvas"></canvas>
     <!--figure></figure-->
     <div class="container-text">
-      <div class="first-text" [innerHTML]="'login_page.right_page.title'"></div>
+      <div
+        class="first-text"
+        [innerHTML]="'loginComponent.login_page.right_page.title' | translate"
+      ></div>
       <div
         class="second-text"
-        [innerHTML]="'login_page.right_page.description'"
+        [innerHTML]="
+          'loginComponent.login_page.right_page.description' | translate
+        "
       ></div>
     </div>
   </div>

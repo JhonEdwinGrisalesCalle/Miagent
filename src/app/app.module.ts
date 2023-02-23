@@ -4,20 +4,24 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { LoginRoutingModule } from './login/login-routing.module';
 import { LoginComponent } from './login/login.component';
 
+import { ValidationMessageComponent } from '@app/common/components/validation-message/validation-message.component';
+
 import { NavbarComponent } from './menus/components/nav/navbar/navbar.component';
+
 import { LeftMenuComponent } from './menus/components/left-menu/left-menu.component';
 import { LeftSubMenuComponent } from './menus/components/left-sub-menu/left-sub-menu.component';
 
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
+
 import { LanguageSelectorComponent } from "./common/components/language-selector/language-selector.component";
 
-
-export function HttpLoaderFactory(http: HttpClient){
-  return new TranslateHttpLoader(http,'./assets/i18n/', '.json');
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 import { UserService } from './common/services/user.service';
@@ -34,40 +38,42 @@ export function AppLoaderFactory(userService: UserService) {
   };
 }
 @NgModule({
-    declarations: [
-        AppComponent,
-        LoginComponent,
-        NavbarComponent,
-        LeftMenuComponent,
-        LeftSubMenuComponent,
-        LanguageSelectorComponent,
-        SessionCloseComponent,
-        StatusAgentComponent,
-        PauseSelectionComponent
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        }),
-    ],
-    providers: [
-      UserService,
-      {
-        provide: APP_INITIALIZER,
-        useFactory: AppLoaderFactory,
-        deps: [UserService, Injector],
-        multi: true
-      },
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    NavbarComponent,
+    LeftMenuComponent,
+    LeftSubMenuComponent,
+    LanguageSelectorComponent,
+    ValidationMessageComponent,
+    SessionCloseComponent,
+    StatusAgentComponent,
+    PauseSelectionComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    LoginRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+  ],
+  providers: [
+    UserService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: AppLoaderFactory,
+      deps: [UserService, Injector],
+      multi: true
+    },
+  ],
+  bootstrap: [AppComponent]
 })
 
 

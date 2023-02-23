@@ -1,0 +1,27 @@
+@import "../../../theme/theme-variables.scss";
+
+:host {
+
+  &[has-icon] {
+    .validation-errors {
+      right: 35px !important;
+    }
+  }
+
+  .validation-errors {
+    position: absolute;
+    right: 10px;
+   // top: $input-height/2;
+    bottom: $input-height/2;
+    transform: translateY(50%);
+
+    .error-message {
+      color: map_get($colors, danger);
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
+
+  }
+
+}
+

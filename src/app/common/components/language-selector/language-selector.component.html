@@ -8,7 +8,7 @@
     <!-- </a> -->
 
   <!-- </div> -->
-  <select #langSelect (change)="changeLang(langSelect.value)"  class="form-select">
+  <select #langSelect (change)="changeLang(langSelect.value)"  class="selection form-select">
     <option *ngFor="let lang of langs" [value]="lang">{{ lang.toUpperCase() }}</option>
   </select>
 </div>

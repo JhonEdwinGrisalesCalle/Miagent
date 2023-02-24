@@ -70,7 +70,7 @@ export class UserService {
     if (event) {
       event.stopPropagation();
     }
-    this.router.navigate(['/login/login'], { replaceUrl: true });
+    this.router.navigate(['/auth/login'], { replaceUrl: true });
   }
 
   logout(): void {
@@ -116,7 +116,6 @@ export class UserService {
       this.response = await lastValueFrom(response$);
 
       const user: User = new User(this.response);
-      console.log('user', user);
 
       this.setCredentials(user, persistent);
       return user;

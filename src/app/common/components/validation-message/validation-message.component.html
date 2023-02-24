@@ -1,7 +1,10 @@
 <div class="validation-errors">
   <ng-container *ngFor="let validation of messages">
-    <div class="error-message" *ngIf="field.hasError(validation.type) && (field.dirty || field.touched)">
-      {{ validation.message | translate}}
+    <div
+      class="error-message"
+      *ngIf="field.hasError(validation.type) && (field.dirty || field.touched)"
+    >
+      {{ validation.message | translate }}
     </div>
   </ng-container>
 </div>

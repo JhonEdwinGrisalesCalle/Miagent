@@ -1,0 +1,19 @@
+.container-text {
+    position: absolute;
+    top: 25%;
+    left: 13%;
+    color: #FFFFFF;
+    transform: translateY(20%);
+
+    .first-text {
+        font-size: 2.4rem;
+        font-weight: 300;
+        margin-bottom: 26px;
+    }
+
+    .second-text {
+        font-size: 1.4rem;
+        font-weight: 300;
+    }
+}
+

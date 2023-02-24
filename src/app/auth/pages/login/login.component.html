@@ -1,0 +1,112 @@
+<div class="content-login-page" [class.show]="isLoaded">
+  <!-- PANTALLA DE LA IZQUIERDA ·······················  -->
+
+  <div class="content-page">
+    <app-logo></app-logo>
+    <div class="languages">
+      <app-language-selector></app-language-selector>
+    </div>
+
+    <div class="content-wrapper">
+      <!-- LOGIN ··········································  -->
+      <div class="content-login">
+        <div class="title">
+          {{ "loginComponent.login_page.login.title" | translate }}
+        </div>
+        <div class="description">
+          {{ "loginComponent.login_page.login.description" | translate }}
+        </div>
+
+        <!-- inputs -->
+        <form class="inputs" [formGroup]="login_form">
+          <!-- EMAIL -->
+          <div class="validate-item">
+            <input
+              class="text-input"
+              type="text"
+              [placeholder]="
+                'loginComponent.login_page.login.placeholder.email' | translate
+              "
+              formControlName="email"
+            />
+            <app-validation-message
+              [field]="login_form.get('email')"
+              [messages]="validation_messages.email"
+            ></app-validation-message>
+          </div>
+
+          <!-- CONTRASEÑA -->
+          <div class="validate-item">
+            <input
+              class="text-input"
+              [type]="passwordType"
+              [placeholder]="
+                'loginComponent.login_page.login.placeholder.password'
+                  | translate
+              "
+              formControlName="password"
+            />
+            <app-validation-message
+              [field]="login_form.get('password')"
+              [messages]="validation_messages.password"
+            ></app-validation-message>
+          </div>
+
+          <!-- checkbox para mantener la sesion  -->
+          <div class="position-checkbox">
+            <input
+              type="checkbox"
+              name="activeSesion"
+              [(ngModel)]="login_remember"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <label for="activeSesion">
+              {{ "loginComponent.login_page.description_checkbox" | translate }}
+            </label>
+          </div>
+
+          <!-- Botón de Login -->
+          <div class="padded-vertical-md">
+            <button
+              mat-flat-button
+              color="primary"
+              app-ga
+              ga-category="login"
+              ga-action="login"
+              class="uppercase"
+              [disabled]="!login_form.valid"
+              (click)="attemptLogin()"
+            >
+              {{ "loginComponent.login_page.button_access" | translate }}
+            </button>
+          </div>
+        </form>
+
+        <div class="line"></div>
+
+        <!-- IR AL REGISTRO -->
+        <div>
+          <p>
+            <a
+              routerLink="/recover-password"
+              app-ga
+              ga-category="login"
+              ga-action="go-recover-password"
+              >{{ "loginComponent.login_page.forgot_password" | translate }}
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANTALLA DE LA DERECHA ·······················  -->
+  <div class="content-hand">
+    <app-auth-right-panel
+      [title]="'loginComponent.login_page.right_page.title' | translate"
+      [description]="
+        'loginComponent.login_page.right_page.description' | translate
+      "
+    ></app-auth-right-panel>
+  </div>
+</div>

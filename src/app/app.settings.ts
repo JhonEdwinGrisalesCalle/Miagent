@@ -39,6 +39,8 @@ export class AppSettings {
 
   static TRANSITION_TIME = 300;
 
+  static LOGO_URL = 'https://s3.eu-central-1.amazonaws.com/assets.33bot.io/logo.svg';
+
   static VALIDATION: any = {
     PATTERNS: {
       EMAIL: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,

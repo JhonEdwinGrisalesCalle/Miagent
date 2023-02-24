@@ -2,44 +2,57 @@
   <!-- PANTALLA DE LA IZQUIERDA ·······················  -->
 
   <div class="content-page">
-    <div class="logo-wrapper">
-      <img
-        class="logo"
-        src="https://s3.eu-central-1.amazonaws.com/assets.33bot.io/logo.svg"
-      />
+    <app-logo></app-logo>
 
-      <div class="languages"></div>
+    <div class="languages">
+      <app-language-selector></app-language-selector>
     </div>
 
     <div class="content-wrapper">
       <!-- REGISTRO ·······································  -->
-      <div class="content-register" *ngIf="activePage == 'register'">
+      <div class="content-register">
         <div class="title">
-          {{ "login_page.register.title" }}
+          {{ "loginComponent.register.title" | translate }}
         </div>
         <div class="description">
-          {{ "login_page.register.description" }}
+          {{ "loginComponent.register.description" | translate }}
         </div>
 
         <!-- inputs -->
-        <div class="inputs">
+        <div class="inputs" [formGroup]="register_form">
           <div class="validate-item">
             <input
               type="text"
               class="text-input"
-              [placeholder]="'login_page.register.placeholder.name'"
+              [placeholder]="
+                'loginComponent.register.placeholder.name' | translate
+              "
               formControlName="user_name"
             />
           </div>
 
-          <div formGroupName="matching_passwords_register">
+          <!-- EMAIL -->
+          <div class="validate-item">
+            <input
+              type="text"
+              class="text-input"
+              [placeholder]="
+                'loginComponent.register.placeholder.email' | translate
+              "
+              formControlName="email"
+            />
+          </div>
+
+          <div>
+            <!-- <div formGroupName="matching_passwords_register"> -->
             <!-- CONTRASEÑA -->
             <div class="validate-item">
               <input
                 type="password"
                 class="text-input"
-                [placeholder]="'login_page.register.placeholder.password'"
-                formControlName="password"
+                [placeholder]="
+                  'loginComponent.register.placeholder.password' | translate
+                "
               />
             </div>
 
@@ -49,9 +62,9 @@
                 type="password"
                 class="text-input"
                 [placeholder]="
-                  'login_page.register.placeholder.confirm_password'
+                  'loginComponent.register.placeholder.confirm_password'
+                    | translate
                 "
-                formControlName="confirm_new_password"
               />
             </div>
           </div>
@@ -64,16 +77,15 @@
         <!-- Términos y Condiciones -->
         <div class="position-checkbox">
           <input type="checkbox" name="terminos y condiciones" id="" />
+          <label for="activeSesion">
+            {{ "loginComponent.register.accept_legal" | translate }}
+          </label>
         </div>
 
         <!-- Botón de Registro -->
-        <div
-          fxLayout="row"
-          fxLayoutAlign="end center"
-          class="padded-vertical-md"
-        >
+        <div class="padded-vertical-md">
           <button mat-flat-button class="uppercase" color="primary">
-            {{ "loginComponent.login_page.register.button_access" }}
+            {{ "loginComponent.register.button_access" | translate }}
           </button>
         </div>
 
@@ -81,14 +93,14 @@
 
         <div class="text-bottom">
           <p>
-            {{ "login_page.register.have_account" }}
+            {{ "loginComponent.register.have_account" | translate }}
             <a
-              routerLink="/login/login"
+              routerLink="/login"
               app-ga
               ga-category="login"
               ga-action="go-login"
             >
-              {{ "login_page.register.go_login" }}
+              {{ "loginComponent.register.go_login" | translate }}
             </a>
           </p>
         </div>
@@ -98,17 +110,9 @@
 
   <!-- PANTALLA DE LA DERECHA ·······················  -->
   <div class="content-hand">
-    <canvas id="canvas"></canvas>
-    <!--figure></figure-->
-    <div class="container-text">
-      <div
-        class="first-text"
-        [innerHTML]="'loginComponent.login_page.right_page.title'"
-      ></div>
-      <div
-        class="second-text"
-        [innerHTML]="'loginComponent.login_page.right_page.description'"
-      ></div>
-    </div>
+    <app-auth-right-panel
+      [title]="'loginComponent.register.title' | translate"
+      [description]="'loginComponent.register.description' | translate"
+    ></app-auth-right-panel>
   </div>
 </div>

@@ -1,20 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { replace } from 'lodash';
 
-import { AppSettings } from '../app.settings';
-import { UserService } from '../common/services/user.service';
+import { AppSettings } from '../../../app.settings';
+import { UserService } from '../../../common/services/user.service';
+
+
+declare var fluid: any;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['../../auth.component.scss']
 })
 export class LoginComponent implements OnInit {
 
   activePage: string = 'login';
   isLoaded: boolean = false;
-  login_remember: boolean = true;
+  login_remember: boolean = false;
   redirect: string = '';
 
   passwordType: string = 'password';
@@ -41,9 +45,6 @@ export class LoginComponent implements OnInit {
   };
 
   login_form: FormGroup;
-  register_form: FormGroup;
-  recovery_form: FormGroup;
-  reset_form: FormGroup;
   matching_passwords_form: FormGroup;
   matching_passwords_form_reset: FormGroup;
 
@@ -57,13 +58,15 @@ export class LoginComponent implements OnInit {
     if (this.userService.user) {
       this.goHome();
     }
-    this.router.navigate(['/login/recover-password'], { replaceUrl: true })
+
     this.activeRoute.params.subscribe(routeParams => {
       console.log('routeParams', routeParams);
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+
+    fluid.init('canvas');
 
     // this.activeRoute.params.subscribe(routeParams => {
     // this.activePage = routeParams.type;
@@ -121,8 +124,6 @@ export class LoginComponent implements OnInit {
       confirm_new_password: new FormControl('', Validators.required)
     };
 
-    // ··········································
-    // LOGIN
     this.login_form = new FormGroup({
       email: new FormControl('', [
         Validators.required,
@@ -132,47 +133,6 @@ export class LoginComponent implements OnInit {
         Validators.required,
         Validators.minLength(8),
       ])
-    });
-
-    // ··········································
-    // PASSWORD RECOVERY
-    this.recovery_form = new FormGroup({
-      email: new FormControl('', [
-        Validators.required,
-        Validators.pattern(AppSettings.VALIDATION.PATTERNS.EMAIL)
-      ])
-    });
-
-    // ··········································
-    // RESET PASSWORD
-    this.reset_form = new FormGroup({
-      email: new FormControl('', [
-        Validators.required,
-        Validators.pattern(AppSettings.VALIDATION.PATTERNS.EMAIL)
-      ]),
-      // matching_passwords: this.matching_passwords_form_reset,
-      code: new FormControl('', [
-        Validators.required,
-      ]),
-    });
-
-    // ··········································
-    // REGISTER
-    this.register_form = new FormGroup({
-      user_name: new FormControl('', [
-        Validators.required,
-      ]),
-      email: new FormControl('', [
-        Validators.required,
-        Validators.pattern(AppSettings.VALIDATION.PATTERNS.EMAIL)
-      ]),
-      // matching_passwords_register: this.matching_passwords_form,
-      recaptcha: new FormControl('', [
-        Validators.required,
-      ]),
-      code: new FormControl('', [
-        Validators.required,
-      ]),
     });
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -208,12 +168,11 @@ export class LoginComponent implements OnInit {
       await this.userService.login(this.login_form.value, this.login_remember)
       this.isLoaded = true;
       this.isLoaded
-        ? this.router.navigate(['/chat'], { replaceUrl: true })
-        : this.router.navigate(['/login/login'], { replaceUrl: true })
+        ? this.router.navigate(['/chat'], { replaceUrl: true, relativeTo: this.activeRoute })
+        : this.router.navigate(['/login/login'], { replaceUrl: true, relativeTo: this.activeRoute })
     } catch (error) {
       console.error(error);
     }
 
   }
-
 }

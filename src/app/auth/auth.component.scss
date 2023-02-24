@@ -3,8 +3,7 @@
 
 .content-login-page {
     display: flex;
-    // position: relative;
-    
+    overflow: hidden;
     
     .content-page {
         height: 100vh;
@@ -25,35 +24,12 @@
             position: absolute;
             top: 20rem; 
             left: 30%;
-            // background-color: red;
         }
 
-        .logo-wrapper,
         .content-wrapper {
             @media #{$mobile} {
                 position: relative;
                 display: block !important;
-            }
-        }
-
-        .logo-wrapper {
-            @media #{$mobile} {
-                height: 100px;
-                max-height: 100px !important;
-                width: 100%;
-            }
-        }
-
-        .logo {
-            position: absolute;
-            top: 35px;
-            left: 35px;
-            width: 120px;
-
-            @media #{$mobile} {
-                top: 5px;
-                left: 5px;
-                width: 120px;
             }
         }
 
@@ -76,12 +52,6 @@
         .content-reset-password,
         .content-code,
         .content-resend-code {
-            // position: absolute;
-            // text-align: center;
-            // top: 50%;
-            // left: 50%;
-            // transform: translate(-50%, -50%);
-            // width: 70%;
             max-width: 350px;
             margin: 0 auto;
 
@@ -132,17 +102,6 @@
 
     }
 
-    .divider {
-        .title {
-            padding-bottom: 8px;
-            color: $primary;
-            font-size: 2rem;
-            font-weight: 300;
-            line-height: 38px;
-            text-align: center;
-        }
-    }
-
     .content-hand {
         position: relative;
         width: 60%;
@@ -151,41 +110,6 @@
         @media #{$mobile} {
             width: 0%;
             display: none;
-        }
-
-        .container-text {
-            position: absolute;
-            top: 25%;
-            left: 13%;
-            color: #FFFFFF;
-            transform: translateY(20%);
-
-            .first-text {
-                font-size: 2.4rem;
-                font-weight: 300;
-                margin-bottom: 26px;
-            }
-
-            .second-text {
-                font-size: 1.4rem;
-                font-weight: 300;
-            }
-        }
-
-        figure {
-            position: absolute;
-            height: 100%;
-            width: 50%;
-            top: 0;
-            right: 0;
-            margin: 0;
-            background: url(https://s3.eu-central-1.amazonaws.com/assets.33bot.io/corporate/web/landing-slide-01.png) no-repeat;
-            background-position: 20% 100%;
-            background-size: auto 72%;
-            transform: translateX(20%);
-            opacity: 0;
-            transition: all $large-transition;
-            transition-delay: 400ms;
         }
     }
 

@@ -1,0 +1,29 @@
+<!--
+  <ul *ngFor="let chat of chats" [title]="chat.name + ' [' + chat.n_visits + ']'" class="list-chats list-group list-group-scrollable">
+    <li  class=" chatItem list-group-item">
+      <span class="name">{{ chat.name | translate }}</span>
+      <span class="badge">{{ chat.n_visits }}</span>
+       <ul  class="list-group list-group-flush">
+        <li class="list-group-item">fff</li>
+      </ul>
+
+         <app-chatbot-sessions [id_chat]="chat._id"></app-chatbot-sessions>
+    </li>
+  </ul> -->
+
+
+  <div *ngFor="let chat of chats" [title]="chat.name + ' [' + chat.n_visits + ']'"   class="panel-group">
+    <div class="panel panel-default">
+      <div class="overflow-hidden chatItem panel-heading">
+          <div class="item-menu" data-toggle="collapse" [attr.href]="'#'+ chat.name | trim">
+          <span class="name">{{ chat.name | translate }}</span>
+          <span class="badge">{{ chat.n_visits }}</span>
+        </div>
+
+      </div>
+      <div [id]="chat.name | trim" class="panel-collapse collapse">
+        <app-chatbot-sessions [id_chat]="chat._id"></app-chatbot-sessions>
+      </div>
+    </div>
+  </div>
+

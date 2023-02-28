@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginRoutingModule } from './login/login-routing.module';
 import { LoginComponent } from './login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ValidationMessageComponent } from '@app/common/components/validation-message/validation-message.component';
 
@@ -17,6 +18,7 @@ import { LeftSubMenuComponent } from './menus/components/left-sub-menu/left-sub-
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
+import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 
 import { LanguageSelectorComponent } from "./common/components/language-selector/language-selector.component";
 
@@ -28,6 +30,9 @@ import { UserService } from './common/services/user.service';
 import { SessionCloseComponent } from './menus/components/nav/session-close/session-close.component';
 import { StatusAgentComponent } from './menus/components/nav/status-agent/status-agent.component';
 import { PauseSelectionComponent } from './menus/components/nav/pause-selection/pause-selection.component';
+import { UserChatbotsComponent } from './menus/components/user-chatbots/user-chatbots.component';
+import { ChatbotSessionsComponent } from './menus/components/chatbot-sessions/chatbot-sessions.component';
+import { TrimPipe } from './menus/pipes/trim.pipe';
 
 export function AppLoaderFactory(userService: UserService) {
   return () => {
@@ -48,14 +53,19 @@ export function AppLoaderFactory(userService: UserService) {
     ValidationMessageComponent,
     SessionCloseComponent,
     StatusAgentComponent,
-    PauseSelectionComponent
+    PauseSelectionComponent,
+    UserChatbotsComponent,
+    ChatbotSessionsComponent,
+    TrimPipe,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     LoginRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MdbAccordionModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

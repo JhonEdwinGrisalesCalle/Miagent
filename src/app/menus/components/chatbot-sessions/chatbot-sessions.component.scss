@@ -1,0 +1,25 @@
+.list-sessions{
+  border-radius: 0%;
+  //display: none;
+}
+
+.sessionItem{
+    height: 32px;
+    padding: 8px 16px 8px 20px;
+    background: #2F3332;
+    color: white;
+    font-size: 12px;
+    border: none;
+    font-family: 'Mulish';
+    cursor: pointer;
+    border-radius: 0%;
+
+}
+
+.sessionItem:hover{
+  background: #464C4B;
+}
+
+.text{
+
+}

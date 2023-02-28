@@ -54,5 +54,24 @@
       "message_select":"select a reason",
       "button_acept": "Accept"
     }
+  },
+  "vertical_navegation":{
+    "dashboard": "Dashboard",
+    "chatBots": "Chatbots",
+    "historical_sessions" : "Historical sessions",
+    "rules": "Rules"
+  },
+  "dashboard": {
+    "menu": {
+      "chats": "Chats",
+      "offline": "Desconectado",
+      "online": "En linea",
+      "missing": "Ausente",
+      "logout": "Desconectar",
+      "sessions": "Sesiones",
+      "no_sessions": "No hay sesiones",
+      "anonymous": "Anónimo",
+      "session_already_help": "La sesión ya no necesita ayuda"
+    }
   }
 }

@@ -1,25 +1,15 @@
 .left {
-  width: 212px;
+  width: 164px;
   height: 100%;
   background: #2F3332;
   white-space: nowrap;
   transition: width 0.5s;
   position: fixed;
   margin-left: 3.1rem;
-
   z-index: 9999;
-}
+  color: white;
 
-.left ul {
-  padding: 0;
-  list-style-type: none;
-  text-align: left;
 }
-
-.left li:hover {
-  background: #464C4B;
-}
-
 .left .item-menu {
   height: 48px;
   width: 48px;
@@ -27,26 +17,17 @@
 
 
 }
+
+.title{
+text-align: center;
+height: 48px;
+padding: 9%;
+border-bottom: 1px solid #d1d1d15e;
+
+}
+
 .row>* {
+  padding-right: 0px;
+
   padding-left: 0px;
 }
-
-.icon:hover {
-  background: #464C4B;
-  fill: #E63F23;
-
-}
-// 	.left a{
-// 		color: white;
-// 	    text-decoration: none;
-// 	    font-weight: bold;
-// 	}
-// 	span.menu{
-// 		padding-left: 17px;
-// 	}
-// 	.t_search {
-// 	    color: black;
-// 	    height: 35px;
-// 	    margin-left: 15px;
-// 	    width: 190px
-// 	}

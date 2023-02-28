@@ -27,6 +27,7 @@
     "install": "^0.13.0",
     "jquery": "^3.6.3",
     "lodash": "^4.17.21",
+    "mdb-angular-ui-kit": "^4.0.0",
     "npm": "^9.5.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

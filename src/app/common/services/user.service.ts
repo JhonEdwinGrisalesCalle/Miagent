@@ -117,6 +117,7 @@ export class UserService {
 
       const user: User = new User(this.response);
       console.log('user', user);
+      console.log('rocken', user.token);
 
       this.setCredentials(user, persistent);
       return user;

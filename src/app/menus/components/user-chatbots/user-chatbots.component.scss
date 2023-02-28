@@ -1,0 +1,51 @@
+.list-chats li:hover > ul{
+  display:block;
+}
+
+.chatItem{
+    background: #2F3332;
+    color: white;
+    text-transform: uppercase;
+    font-size: 12px !important;
+    border: none;
+    font-family: 'Mulish';
+    cursor: pointer;
+    width: 164px;
+    height: 40px;
+    padding: 6%;
+}
+
+.chatItem:hover{
+  background: #464C4B;
+}
+
+.badge{
+  font-size: 0.8em;
+  position: absolute;
+  right: 10px;
+  // top: 50%;
+  // -webkit-transform: translateY(-50%);
+  // transform: translateY(-50%);
+  padding: 3px 5px;
+  border-radius: 24px;
+  // min-width: 39px;
+  text-align: center;
+  // border-width: 1px;
+  // border-style: solid;
+  // z-index: 20;
+}
+
+.badge{
+background-color: #E63F23;;
+}
+
+.name{
+  position: absolute;
+  left: 20px;
+  min-width: 39px;
+  max-width: 155px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  z-index: 20;
+}

@@ -50,9 +50,28 @@
     "pause": "En pausa",
     "logout":"Cerrar sesión",
     "state_drop_down":{
-      "information":"Estado \"En pausa\" por",
+      "information":"Estado \" En pausa\" por",
       "message_select":"Selecciona un motivo",
       "button_acept": "Aceptar"
+    }
+  },
+  "vertical_navegation":{
+    "dashboard": "Dashboard",
+    "chatBots": "Chatbots",
+    "historical_sessions" : "Históricos",
+    "rules": "Reglas"
+  },
+  "dashboard": {
+    "menu": {
+      "chats": "Chats",
+      "offline": "Offline",
+      "online": "On line",
+      "missing": "Missing",
+      "logout": "Logout",
+      "sessions": "Sessions",
+      "no_sessions": "No sessions",
+      "anonymous": "Anonymous",
+      "session_already_help": "The session no longer needs help"
     }
   }
 }

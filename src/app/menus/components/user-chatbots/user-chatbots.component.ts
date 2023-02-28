@@ -1,23 +1,23 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { TelemarketerService } from '@app/common/services/telemarketer.service';
+import { any } from 'joi';
 
 @Component({
-  selector: 'app-left-sub-menu',
-  templateUrl: './left-sub-menu.component.html',
-  styleUrls: ['./left-sub-menu.component.scss']
+  selector: 'app-user-chatbots',
+  templateUrl: './user-chatbots.component.html',
+  styleUrls: ['./user-chatbots.component.scss']
 })
-export class LeftSubMenuComponent {
-  @Input() section_title : string;
+export class UserChatbotsComponent {
+
+  visible: boolean = false;
+
+
   getting_chats: boolean = false;
   chats: any = [];
   active_chat_id: string = '';
   is_init: boolean = false;
 
-
-  chat_sessions: Array<any> = [];
-  page: number = 0;
-  per_page: number = 20;
 
   constructor(
     private router: Router,
@@ -35,22 +35,13 @@ export class LeftSubMenuComponent {
         this.init();
       }
     });
+  }
 
-    // this.onNewSession = (message) => {
-    //   this._onNewSession(message);
-    // };
-
-    // this.events.subscribe('new:session', this.onNewSession);
-   }
-
-
-   async init() {
+  async init() {
     if (!this.is_init) {
       this.is_init = true;
-      await this.getMenu();
-      if(this.section_title == undefined ){
-        this.section_title= "vertical_navegation.dashboard";
-      }
+      await this.getListChat();
+
       //await this.getChatSessions(this.chats[0]._id)
       //console.log(this.chats[0]._id)
       // if ((!this.active_chat_id || this.active_chat_id.trim() === '') && !this.appService.isMobile) {
@@ -59,11 +50,12 @@ export class LeftSubMenuComponent {
     }
   }
 
-   async getMenu(): Promise<any> {
+  async getListChat(): Promise<any> {
     try {
       if (!this.getting_chats) {
         this.getting_chats = true;
         this.chats = await this.telemarketerService.listChats();
+
       }
     } catch (err) {
       location.reload();
@@ -71,22 +63,10 @@ export class LeftSubMenuComponent {
     }
     this.getting_chats = false;
   }
+  selected(value:any){
+    this.visible= value;
+  };
 
-  /////////////////////////
-
-  async getChatSessions(chat_id:any): Promise<any> {
-    console.log(chat_id)
-
-    try {
-      const chat_sessions = await this.telemarketerService.getSessions(chat_id, this.page, this.per_page);
-      this.chat_sessions = this.chat_sessions.concat(chat_sessions);
-
-      if (chat_id) {
-       //await this.getTimeTranslates();
-      }
-    } catch (err) {
-
-      //this.alertService.showErrorAlert(err.message);
-    }
- }
 }
+
+

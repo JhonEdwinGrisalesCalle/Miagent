@@ -38,5 +38,5 @@
 
 <app-pause-selection *ngIf="state==false"></app-pause-selection>
 
-<app-left-menu></app-left-menu>
-<app-left-sub-menu></app-left-sub-menu>
+<app-left-menu (section_title)="optionSelected($event)"></app-left-menu>
+<app-left-sub-menu [section_title]="selectOptionName"></app-left-sub-menu>

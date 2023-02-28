@@ -9,7 +9,10 @@ import { UserService } from '@app/common/services/user.service';
 export class NavbarComponent {
 
   state:boolean;
-  constructor(private userService: UserService) { }
+  selectOptionName: string;
+
+  constructor(private userService: UserService) {
+   }
 
   nameUser = this.userService.user?.email || 'undefined';
 
@@ -21,4 +24,12 @@ export class NavbarComponent {
   stateUser(state: boolean){
     this.state= state;
   }
+
+  optionSelected(selectOptionName: string){
+    this.selectOptionName= selectOptionName;
+    //console.log(this.selectOptionName,"seleccionnnn")
+
+  }
 }
+
+
